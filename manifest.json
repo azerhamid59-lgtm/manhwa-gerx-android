@@ -4,6 +4,7 @@
   "description": "منصتك الاحترافية لقراءة المانغا والمانهوا والمانغا.",
   "start_url": "/manhwa_gerx/index.html",
   "display": "standalone",
+  "orientation": "portrait", 
   "background_color": "#0c0c0e",
   "theme_color": "#ff2a5f",
   "icons": [
