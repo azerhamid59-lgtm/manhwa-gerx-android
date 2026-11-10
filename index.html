@@ -1579,10 +1579,16 @@
         }
 
         async function handleGoogleOAuth() {
-            if (!db) return;
-            try { const { error } = await db.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin } }); if (error) throw error; }
-            catch (err) { showToast("تعذر تسجيل الدخول بـ Google.", "error"); }
-        }
+    if (!db) return;
+    try { 
+        const { error } = await db.auth.signInWithOAuth({ 
+            provider: 'google', 
+            options: { redirectTo: 'https://azerhamid59-lgtm.github.io/manhwa_gerx/' } 
+        }); 
+        if (error) throw error; 
+    }
+    catch (err) { showToast("تعذر تسجيل الدخول بـ Google.", "error"); }
+}
 
         async function handleLogout() {
             showConfirmationSheet('تسجيل الخروج', 'هل أنت متأكد من رغبتك في تسجيل الخروج من حسابك؟', 'خروج', async () => {
