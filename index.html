@@ -6,6 +6,7 @@
     <title>ManhwaGerx</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="/manhwa_gerx/manifest.json">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
@@ -4242,6 +4243,11 @@
                 console.error("Critical failure during init", e);
             }
         });
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/manhwa_gerx/sw.js');
+  }
     </script>
 </body>
 </html>
