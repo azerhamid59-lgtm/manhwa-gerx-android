@@ -6,7 +6,6 @@
     <title>ManhwaGerx</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="manifest" href="/manhwa_gerx/manifest.json">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
@@ -201,8 +200,8 @@
         #detailsView.active .banner-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(12,12,14,0.2) 0%, rgba(12,12,14,0.85) 60%, var(--bg-main) 100%); }
         .work-details-container { position: relative; z-index: 2; width: 100%; padding-bottom: 40px; }
         .top-nav-bar { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px; z-index: 10; }
-        .btn-back-circle { background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; flex-shrink: 0; transition: background 0.2s; }
-        .btn-back-circle:hover { background: rgba(0,0,0,0.7); }
+        .btn-back-arrow { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; padding: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.2s; }
+        .btn-back-arrow:hover { opacity: 0.7; }
         .btn-report-corner { background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; transition: 0.2s; flex-shrink: 0; }
         .btn-report-corner:hover { background: rgba(0, 0, 0, 0.7); color: var(--danger-bright); border-color: var(--danger-bright); }
         .page-indicator-text { color: #ffffff; font-size: 1.1rem; font-weight: 800; text-shadow: 0 2px 6px rgba(0,0,0,0.8); flex: 1; text-align: center; }
@@ -280,7 +279,7 @@
         #commentsPageView { min-height: 100vh; padding-bottom: 130px; }
         .comments-section-wrapper { padding: 0; max-width: 800px; margin: 0 auto; }
         .comments-page-top-bar { position: relative; display: flex; align-items: center; justify-content: center; padding: 16px 60px; border-bottom: 1px solid var(--border); min-height: 64px; z-index: 1000; }
-        .comments-page-top-bar .btn-back-circle { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; }
+        .comments-page-top-bar .btn-back-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); }
         .comments-page-top-bar .comments-header-actions { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); }
         .comments-page-title-main { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; min-width: 0; }
         .comments-page-title-main .comments-title-text { font-size: 1.05rem; font-weight: 800; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
@@ -502,7 +501,7 @@
             .comments-send-icon-btn:hover { transform: scale(1.06); background: #e02352; }
             .history-pill:hover { border-color: var(--accent); }
             .drawer-item:hover { background: rgba(255,42,95,0.06); color: var(--accent); }
-            .btn-back-circle:hover { background: rgba(0,0,0,0.7); }
+            .btn-back-arrow:hover { opacity: 0.7; }
             .lib-tab:hover { border-color: var(--accent); }
             .lib-select-item:hover { border-color: rgba(255,42,95,0.5); }
         }
@@ -760,7 +759,7 @@
         
         <div id="searchPageView" class="view">
             <div class="search-page-header">
-                <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                 <div class="search-input-wrapper"><i class="fa-solid fa-magnifying-glass" style="color:var(--text-secondary); font-size:0.85rem;"></i><input type="text" id="liveSearchInput" class="search-main-input" placeholder="ابحث..." inputmode="search"><button class="clear-search-btn" id="clearSearchTextBtn"><i class="fa-solid fa-xmark"></i></button></div>
                 <button class="header-action-icon" id="openAdvSearchFromPageBtn"><i class="fa-solid fa-sliders"></i></button>
             </div>
@@ -818,7 +817,7 @@
         <div id="readingHistoryView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">سجل المشاهدة</h3>
                 </div>
                 <button class="notif-icon-only-btn" onclick="clearReadingHistory()" title="مسح السجل"><i class="fa-solid fa-trash-can"></i></button>
@@ -842,7 +841,7 @@
         <div id="myRequestsView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">طلباتي</h3>
                 </div>
                 <div style="display:flex; gap:8px;">
@@ -867,7 +866,7 @@
         <div id="historyView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">سجل المشاهدة القديم</h3>
                 </div>
             </div>
@@ -877,7 +876,7 @@
         <div id="downloadsView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">التنزيلات</h3>
                 </div>
             </div>
@@ -887,7 +886,7 @@
         <div id="notificationsView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">الإشعارات</h3>
                 </div>
                 <div class="notifications-actions-row"><button class="notif-action-btn" id="markAllReadBtn"><i class="fa-solid fa-check-double"></i> قراءة الكل</button><button class="notif-icon-only-btn" id="clearOldNotifsBtn"><i class="fa-solid fa-trash-can"></i></button></div>
@@ -911,7 +910,7 @@
         <div id="settingsView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="navigateTo('home')"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">الإعدادات</h3>
                 </div>
             </div>
@@ -937,7 +936,7 @@
         <div id="privacyView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">سياسة الخصوصية</h3>
                 </div>
             </div>
@@ -953,7 +952,7 @@
         <div id="termsView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">شروط الاستخدام</h3>
                 </div>
             </div>
@@ -969,7 +968,7 @@
         <div id="faqView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">الأسئلة الشائعة</h3>
                 </div>
             </div>
@@ -985,7 +984,7 @@
         <div id="aboutView" class="view">
             <div class="notifications-top-bar">
                 <div>
-                    <button class="btn-back-circle" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" onclick="goBackFromLegal()"><i class="fa-solid fa-arrow-right"></i></button>
                     <h3 class="section-title" style="margin-bottom: 0;">حول التطبيق</h3>
                 </div>
             </div>
@@ -1010,7 +1009,7 @@
             <div class="work-details-container">
                 <div class="banner-background"><img id="workBannerImg" src="" alt=""><div class="banner-overlay"></div></div>
                 <div class="top-nav-bar">
-                    <button class="btn-back-circle" id="detailsBackBtn"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" id="detailsBackBtn"><i class="fa-solid fa-arrow-right"></i></button>
                     <span class="page-indicator-text">صفحة العمل</span>
                     <button class="btn-report-corner" id="btnReportWork" title="إبلاغ عن العمل"><i class="fa-solid fa-triangle-exclamation"></i></button>
                 </div>
@@ -1058,7 +1057,7 @@
         <div id="commentsPageView" class="view">
             <div class="comments-section-wrapper">
                 <div class="comments-page-top-bar">
-                    <button class="btn-back-circle" id="commentsPageBackBtn"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn-back-arrow" id="commentsPageBackBtn"><i class="fa-solid fa-arrow-right"></i></button>
                     <div class="comments-page-title-main">
                         <span class="comments-title-text" id="commentsPageTitleSpan">التعليقات</span>
                         <span class="comments-title-subtitle" id="commentsPageSubtitleSpan">تعليقات العمل</span>
@@ -1975,7 +1974,7 @@
                                     <div class="hc-title">${escapeHtml(r.title)}</div>
                                     <span class="status-badge ${badgeClass}">${statusText}</span>
                                 </div>
-                                <div class="hc-meta" dir="rtl">رقم الطلب: <span dir="ltr">${r.request_number || '—'} . ${new Date(r.created_at).toLocaleDateString('en-GB')}</span></div>
+                                <div class="hc-meta" dir="rtl">رقم الطلب: <span dir="ltr">${r.request_number || '—'}</span> • <span dir="ltr">${new Date(r.created_at).toLocaleDateString('en-GB')}</span></div>
                                 <div style="font-size:0.75rem; color:var(--text-secondary); margin-top:6px;">${escapeHtml(r.description || '')}</div>
                                 ${r.admin_reply ? `<div style="background:rgba(255,42,95,0.1); padding:8px; border-radius:8px; margin-top:8px; font-size:0.75rem; border-right:3px solid var(--accent);"><strong>رد الإدارة:</strong> ${escapeHtml(r.admin_reply)}</div>` : ''}
                             </div>
@@ -4243,11 +4242,6 @@
                 console.error("Critical failure during init", e);
             }
         });
-    </script>
-    <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/manhwa_gerx/sw.js');
-  }
     </script>
 </body>
 </html>
