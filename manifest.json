@@ -1,0 +1,17 @@
+{
+  "name": "Manhwa Gerx",
+  "short_name": "Manhwa Gerx",
+  "description": "منصتك الاحترافية لقراءة المانغا والمانهوا والمانغا.",
+  "start_url": "/manhwa_gerx/index.html",
+  "display": "standalone",
+  "background_color": "#0c0c0e",
+  "theme_color": "#ff2a5f",
+  "icons": [
+    {
+      "src": "https://azerhamid59-lgtm.github.io/manhwa_gerx/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
