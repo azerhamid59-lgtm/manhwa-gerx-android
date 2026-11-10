@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.manhwagerx.app",
+        "sha256_cert_fingerprints": ["A3:D8:64:25:39:41:8E:45:BB:AB:41:D8:A3:E2:AC:2B:F9:D0:F3:47:20:28:0B:7C:7D:DE:8A:4F:14:AA:D1:91"]
+      }
+    }]
