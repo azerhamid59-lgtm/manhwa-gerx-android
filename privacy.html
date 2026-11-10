@@ -9,7 +9,6 @@
     <style>
         :root {
             --bg-main: #0c0c0e;
-            --bg-card: #15151a;
             --accent: #e50914; /* اللون الأحمر الجديد */
             --text-primary: #ffffff;
             --text-secondary: #9a9ab0;
@@ -30,18 +29,14 @@
             padding: 20px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
 
+        /* إزالة الصندوق وجعل المحتوى ممتداً مباشرة */
         .container {
             max-width: 800px;
             width: 100%;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            margin-top: 20px;
-            margin-bottom: 40px;
+            padding: 20px 10px;
         }
 
         .header {
@@ -71,8 +66,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: rgba(229, 9, 20, 0.1); /* أحمر شفاف */
-            border: 1px solid rgba(229, 9, 20, 0.3); /* حدود حمراء */
+            background-color: rgba(229, 9, 20, 0.1);
+            border: 1px solid rgba(229, 9, 20, 0.3);
             color: var(--accent);
             padding: 6px 16px;
             border-radius: 20px;
@@ -115,7 +110,7 @@
         }
 
         .content-section ul li::before {
-            content: '\f111'; /* FontAwesome circle */
+            content: '\f111';
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             font-size: 0.4rem;
@@ -125,13 +120,15 @@
             top: 8px;
         }
 
+        /* تعديل صندوق التواصل ليكون أنيقاً بدون تداخل */
         .contact-box {
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         .contact-box p {
@@ -149,13 +146,7 @@
             text-decoration: underline;
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-                border-radius: 12px;
-                margin-top: 10px;
-            }
             .logo-text { font-size: 1.5rem; }
             .header h1 { font-size: 1.2rem; }
             .content-section h2 { font-size: 1rem; }
