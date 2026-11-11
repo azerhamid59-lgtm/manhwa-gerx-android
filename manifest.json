@@ -6,7 +6,7 @@
   "start_url": "/manhwa_gerx/index.html",
   "display": "standalone",
   "orientation": "portrait", 
-  "background_color": "#0c0c0e",
+  "background_color": "#2c2c2c",
   "theme_color": "#0c0c0e", 
   "icons": [
     {
