@@ -3,7 +3,7 @@
   "name": "Manhwa Gerx",
   "short_name": "Manhwa Gerx",
   "description": "منصتك الاحترافية لقراءة المانغا والمانهوا والمانغا.",
-  "start_url": "/manhwa_gerx/index.html",
+  "start_url": "/manhwa_gerx/", 
   "display": "standalone",
   "orientation": "portrait", 
   "background_color": "#2c2c2c",
