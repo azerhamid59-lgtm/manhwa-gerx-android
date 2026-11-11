@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            --bg-main: #0c0c0e; --bg-card: #15151a; --bg-header: #131318;
+            --bg-main: #0c0c0e; --bg-card: #15151a; --bg-header: #0c0c0e; /* تعديل 1: توحيد اللون */
             --accent: #e50914; --accent-glow: rgba(229, 9, 20, 0.35);
             --text-primary: #ffffff; --text-secondary: #9a9ab0;
             --border: #22222d; --radius: 12px; --danger-bright: #ff003c;
@@ -56,7 +56,7 @@
         .ptr-spinner.spinning { animation: ptrSpin 0.7s linear infinite; }
         @keyframes ptrSpin { to { transform: rotate(360deg); } }
 
-        .app-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background-color: var(--bg-header); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+        .app-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background-color: var(--bg-header); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(12px); } /* تعديل 2: إزالة الحد السفلي */
         .header-right { display: flex; align-items: center; gap: 12px; }
         .header-left-tools { display: flex; align-items: center; gap: 14px; }
         .logo-image-style { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.5px; cursor: pointer; }
@@ -126,7 +126,7 @@
         .btn-apply { flex: 1; background: var(--accent); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.85rem; }
         .btn-reset { flex: 1; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.85rem; }
 
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--bg-header); display: flex; justify-content: space-around; align-items: center; padding: 8px 0; border-top: 1px solid var(--border); z-index: 1000; backdrop-filter: blur(12px); }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: var(--bg-main); display: flex; justify-content: space-around; align-items: center; padding: 8px 0; z-index: 1000; backdrop-filter: blur(12px); } /* تعديل 3: إزالة الحد العلوي وتوحيد اللون */
         .nav-item { color: var(--text-secondary); text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; font-weight: 600; cursor: pointer; transition: color 0.2s; flex: 1; }
         .nav-item i { font-size: 1.1rem; margin-bottom: 2px; }
         .nav-item.active { color: var(--accent); }
@@ -186,7 +186,7 @@
         .btn-gate-cancel { flex: 1; background: #ffffff; color: #000000; border: none; padding: 10px; border-radius: 10px; font-weight: 700; cursor: pointer; }
 
         .notifications-top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 16px; }
-        .notifications-top-bar > div:first-child { display: flex; align-items: center; gap: 16px; } /* Increased gap */
+        .notifications-top-bar > div:first-child { display: flex; align-items: center; gap: 16px; } 
         .notifications-actions-row { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
         .notif-action-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); font-size: 0.75rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 36px; white-space: nowrap; }
         .notif-icon-only-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
