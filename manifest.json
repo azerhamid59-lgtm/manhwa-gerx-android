@@ -6,7 +6,7 @@
   "display": "standalone",
   "orientation": "portrait", 
   "background_color": "#0c0c0e",
-  "theme_color": "#ff2a5f",
+  "theme_color": "#0c0c0e", 
   "icons": [
     {
       "src": "https://azerhamid59-lgtm.github.io/manhwa_gerx/icon.png",
