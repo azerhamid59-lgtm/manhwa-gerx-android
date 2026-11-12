@@ -3734,16 +3734,24 @@ body {
         if (rv.requestFullscreen) rv.requestFullscreen().catch(e => {});
         else if (rv.webkitRequestFullscreen) rv.webkitRequestFullscreen();
         
-        // إخفاء شريط الحالة العلوي (Native)
+        // إخفاء الشريط العلوي
         if (window.Capacitor && window.Capacitor.Plugins.StatusBar) {
             window.Capacitor.Plugins.StatusBar.hide();
+        }
+        // إخفاء الشريط السفلي (أزرار التنقل)
+        if (window.Capacitor && window.Capacitor.Plugins.NavigationBar) {
+            window.Capacitor.Plugins.NavigationBar.hide();
         }
     } else {
         if (document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(e => {});
         
-        // إظهار شريط الحالة العلوي
+        // إظهار الشريط العلوي
         if (window.Capacitor && window.Capacitor.Plugins.StatusBar) {
             window.Capacitor.Plugins.StatusBar.show();
+        }
+        // إظهار الشريط السفلي
+        if (window.Capacitor && window.Capacitor.Plugins.NavigationBar) {
+            window.Capacitor.Plugins.NavigationBar.show();
         }
     }
     saveReaderSettings();
