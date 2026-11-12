@@ -10,17 +10,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
 
-        /* إخفاء شريط التمرير نهائياً في كل مكان */
+        /* إخفاء شريط التمرير نهائياً في كل العناصر */
+* {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+}
 *::-webkit-scrollbar {
-    display: none !important;
+    display: none !important; /* Chrome, Safari, Opera */
     width: 0px !important;
     height: 0px !important;
-    background: transparent !important;
-}
-* {
-    scrollbar-width: none !important; /* لفايرفوكس */
-    -ms-overflow-style: none !important; /* للويندوز */
-}
+        }
 
         html, body { background-color: #0c0c0e; }
         :root {
