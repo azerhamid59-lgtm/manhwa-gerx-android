@@ -3606,6 +3606,10 @@ body {
             document.getElementById('readerView').classList.add('active');
             document.getElementById('appHeaderElement').style.display = 'none';
             document.getElementById('bottomNav').style.display = 'none';
+            
+            if (readerSettings.fullscreen) {
+                setSystemBarsVisibility(false);
+            }
 
             const positionKey = `mg_reader_pos_${manhwaId}_${chapterNum}`;
             const savedPos = parseInt(localStorage.getItem(positionKey) || '0', 10);
@@ -3632,6 +3636,9 @@ body {
             readerOpenGeneration++;
             if (window._readerObserver) { window._readerObserver.disconnect(); window._readerObserver = null; }
             if (document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(e => {});
+            
+            setSystemBarsVisibility(true);
+            
             document.getElementById('readerView').classList.remove('active');
             document.getElementById('appHeaderElement').style.display = 'flex';
             document.getElementById('bottomNav').style.display = 'flex';
@@ -3727,35 +3734,32 @@ body {
             saveReaderSettings();
         }
         function toggleFullscreenFeature(cb) {
-    readerSettings.fullscreen = cb.checked;
-    const rv = document.getElementById('readerView');
-    
-    if (cb.checked) {
-        if (rv.requestFullscreen) rv.requestFullscreen().catch(e => {});
-        else if (rv.webkitRequestFullscreen) rv.webkitRequestFullscreen();
-        
-        // إخفاء الشريط العلوي
-        if (window.Capacitor && window.Capacitor.Plugins.StatusBar) {
-            window.Capacitor.Plugins.StatusBar.hide();
+            readerSettings.fullscreen = cb.checked;
+            const rv = document.getElementById('readerView');
+            
+            if (cb.checked) {
+                if (rv.requestFullscreen) rv.requestFullscreen().catch(e => {});
+                else if (rv.webkitRequestFullscreen) rv.webkitRequestFullscreen();
+                setSystemBarsVisibility(false); // إخفاء الأشرطة
+            } else {
+                if (document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(e => {});
+                setSystemBarsVisibility(true); // إظهار الأشرطة
+            }
+            saveReaderSettings();
         }
-        // إخفاء الشريط السفلي (أزرار التنقل)
-        if (window.Capacitor && window.Capacitor.Plugins.NavigationBar) {
-            window.Capacitor.Plugins.NavigationBar.hide();
+
+        // دالة مساعدة للتحكم في الأشرطة
+        function setSystemBarsVisibility(visible) {
+            if (window.Capacitor) {
+                if (window.Capacitor.Plugins.StatusBar) {
+                    visible ? window.Capacitor.Plugins.StatusBar.show() : window.Capacitor.Plugins.StatusBar.hide();
+                }
+                if (window.Capacitor.Plugins.NavigationBar) {
+                    visible ? window.Capacitor.Plugins.NavigationBar.show() : window.Capacitor.Plugins.NavigationBar.hide();
+                }
+            }
         }
-    } else {
-        if (document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(e => {});
-        
-        // إظهار الشريط العلوي
-        if (window.Capacitor && window.Capacitor.Plugins.StatusBar) {
-            window.Capacitor.Plugins.StatusBar.show();
-        }
-        // إظهار الشريط السفلي
-        if (window.Capacitor && window.Capacitor.Plugins.NavigationBar) {
-            window.Capacitor.Plugins.NavigationBar.show();
-        }
-    }
-    saveReaderSettings();
-        }
+
         function togglePageCounterView(cb) { document.getElementById('floatingPageCounter').style.display = cb.checked ? 'block' : 'none'; }
 
         function setupPdfScrollSpy() {
