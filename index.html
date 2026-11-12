@@ -4329,21 +4329,47 @@ body {
   });
     </script>
     <script>
-    // مراقبة تغير حجم الشاشة لإخفاء الأشرطة تلقائياً عند السحب
-    let barHideTimeout;
-    window.addEventListener('resize', () => {
-        // التحقق من أننا في القارئ ووضع ملء الشاشة مفعل
-        if (readerSettings.fullscreen && document.getElementById('readerView').classList.contains('active')) {
-            clearTimeout(barHideTimeout);
-            // إخفاء الأشرطة مرة أخرى بعد ثانيتين من السحب
-            barHideTimeout = setTimeout(() => {
+    // إجبار الأشرطة على الاختفاء كل ثانية إذا كنا في القارئ ووضع ملء الشاشة مفعل
+    let forceHideInterval = null;
+    
+    function startForceHide() {
+        if (forceHideInterval) clearInterval(forceHideInterval);
+        forceHideInterval = setInterval(() => {
+            if (readerSettings.fullscreen && document.getElementById('readerView').classList.contains('active')) {
                 if (window.Capacitor) {
                     if (window.Capacitor.Plugins.StatusBar) window.Capacitor.Plugins.StatusBar.hide();
                     if (window.Capacitor.Plugins.NavigationBar) window.Capacitor.Plugins.NavigationBar.hide();
                 }
-            }, 2000); 
+            }
+        }, 1000); // كل ثانية
+    }
+
+    // تعديل دالة فتح القارئ لتشغيل المؤقت
+    const origOpenPdfReader = window.openPdfReader;
+    window.openPdfReader = function(...args) {
+        origOpenPdfReader.apply(this, args);
+        if (readerSettings.fullscreen) {
+            startForceHide();
         }
-    });
+    };
+
+    // تعديل دالة إغلاق القارئ لإيقاف المؤقت
+    const origClosePdfReader = window.closePdfReader;
+    window.closePdfReader = function(...args) {
+        if (forceHideInterval) { clearInterval(forceHideInterval); forceHideInterval = null; }
+        origClosePdfReader.apply(this, args);
+    };
+
+    // تعديل دالة تفعيل/إلغاء ملء الشاشة
+    const origToggleFullscreen = window.toggleFullscreenFeature;
+    window.toggleFullscreenFeature = function(cb) {
+        origToggleFullscreen(cb);
+        if (cb.checked) {
+            startForceHide();
+        } else {
+            if (forceHideInterval) { clearInterval(forceHideInterval); forceHideInterval = null; }
+        }
+    };
     </script>
     
 </body>
