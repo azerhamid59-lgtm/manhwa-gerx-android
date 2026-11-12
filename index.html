@@ -9,6 +9,7 @@
     <link rel="manifest" href="/manhwa_gerx/manifest.json">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        html, body { background-color: #0c0c0e; }
         :root {
             --bg-main: #0c0c0e; --bg-card: #15151a; --bg-header: #0c0c0e; /* تعديل 1: توحيد اللون */
             --accent: #e50914; --accent-glow: rgba(229, 9, 20, 0.35);
@@ -4250,8 +4251,13 @@
         });
     </script>
     <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/manhwa_gerx/sw.js');
+  // فرض اللون الأسود على أشرطة النظام الأصلية (Native System Bars)
+  if (window.Capacitor && window.Capacitor.Plugins.EdgeToEdge) {
+    window.Capacitor.Plugins.EdgeToEdge.enable({
+      backgroundColor: "#0c0c0e",
+      navigationBarColor: "#0c0c0e",
+      statusBarColor: "#0c0c0e"
+    }).catch(err => console.log('EdgeToEdge error:', err));
   }
     </script>
 </body>
