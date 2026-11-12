@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+سص<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -4327,6 +4327,23 @@ body {
           });
       }
   });
+    </script>
+    <script>
+    // مراقبة تغير حجم الشاشة لإخفاء الأشرطة تلقائياً عند السحب
+    let barHideTimeout;
+    window.addEventListener('resize', () => {
+        // التحقق من أننا في القارئ ووضع ملء الشاشة مفعل
+        if (readerSettings.fullscreen && document.getElementById('readerView').classList.contains('active')) {
+            clearTimeout(barHideTimeout);
+            // إخفاء الأشرطة مرة أخرى بعد ثانيتين من السحب
+            barHideTimeout = setTimeout(() => {
+                if (window.Capacitor) {
+                    if (window.Capacitor.Plugins.StatusBar) window.Capacitor.Plugins.StatusBar.hide();
+                    if (window.Capacitor.Plugins.NavigationBar) window.Capacitor.Plugins.NavigationBar.hide();
+                }
+            }, 2000); 
+        }
+    });
     </script>
     
 </body>
