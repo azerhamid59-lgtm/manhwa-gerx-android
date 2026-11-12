@@ -3727,13 +3727,27 @@ body {
             saveReaderSettings();
         }
         function toggleFullscreenFeature(cb) {
-            readerSettings.fullscreen = cb.checked;
-            const rv = document.getElementById('readerView');
-            if (cb.checked) { if (rv.requestFullscreen) rv.requestFullscreen().catch(e => {}); else if (rv.webkitRequestFullscreen) rv.webkitRequestFullscreen(); }
-            else { if (document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(e => {}); }
-            saveReaderSettings();
+    readerSettings.fullscreen = cb.checked;
+    const rv = document.getElementById('readerView');
+    
+    if (cb.checked) {
+        if (rv.requestFullscreen) rv.requestFullscreen().catch(e => {});
+        else if (rv.webkitRequestFullscreen) rv.webkitRequestFullscreen();
+        
+        // إخفاء شريط الحالة العلوي (Native)
+        if (window.Capacitor && window.Capacitor.Plugins.StatusBar) {
+            window.Capacitor.Plugins.StatusBar.hide();
         }
-        function toggleKeepScreenOn(cb) { if (cb.checked) { if (navigator.wakeLock) navigator.wakeLock.request('screen').catch(e => console.log(e)); } }
+    } else {
+        if (document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(e => {});
+        
+        // إظهار شريط الحالة العلوي
+        if (window.Capacitor && window.Capacitor.Plugins.StatusBar) {
+            window.Capacitor.Plugins.StatusBar.show();
+        }
+    }
+    saveReaderSettings();
+        }
         function togglePageCounterView(cb) { document.getElementById('floatingPageCounter').style.display = cb.checked ? 'block' : 'none'; }
 
         function setupPdfScrollSpy() {
