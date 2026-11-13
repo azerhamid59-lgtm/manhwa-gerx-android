@@ -4173,8 +4173,10 @@ body {
                     try {
                         await window.Capacitor.Plugins.SocialLogin.initialize({
                             google: {
-                                // تأكد من وضع Web Client ID الخاص بك هنا
-                                webClientId: '901201695721-4kokplipcf00epts55u37vjskumr5fv.apps.googleusercontent.com',
+    // تأكد من وضع Web Client ID الخاص بك هنا
+    webClientId: '901201695721-4kokplipcf00epts55u37vjskumr5fv.apps.googleusercontent.com',
+    // أضف هذا السطر الجديد:
+    skipAuthOnlyAuthorizationAfterSignIn: true
                             }
                         });
                         console.log("SocialLogin initialized successfully");
