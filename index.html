@@ -166,27 +166,40 @@ body {
 
         .auth-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-main); z-index: 6000; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
         .auth-page-full { width: 100%; max-width: 400px; margin: auto; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 16px; }
-        .auth-app-title { font-size: 2.3rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 8px; }
-        .auth-app-title .part-white { color: #ffffff; }
-        .auth-app-title .part-pink { color: var(--accent); text-shadow: 0 0 15px var(--accent-glow); }
-        .auth-welcome-heading { font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 6px; }
-        .auth-subheading { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 32px; max-width: 340px; }
-        .auth-action-box { width: 100%; background: transparent; border: none; padding: 0; box-shadow: none; text-align: right; display: flex; flex-direction: column; gap: 12px; }
-        .auth-btn { width: 100%; padding: 14px 18px; border-radius: 14px; border: none; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.95rem; white-space: nowrap; transition: all 0.2s ease; }
-        .btn-google { background: #ffffff; color: #000000; }
-        .btn-email-trigger { background: var(--accent); color: #ffffff; }
-        .auth-input-group { margin-bottom: 16px; text-align: right; }
-        .auth-input-group label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px; }
-        .auth-input-field-wrapper { position: relative; display: flex; align-items: center; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 0 14px; transition: border-color 0.2s; }
-        .auth-input-field-wrapper:focus-within { border-color: var(--accent); }
-        .auth-input-field-wrapper input { width: 100%; background: none; border: none; color: #fff; font-size: 0.9rem; padding: 12px 0; outline: none; }
-        .auth-password-toggle { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 0.9rem; padding: 4px; }
-        .btn-submit-disabled { background: #2a2a35 !important; color: #666677 !important; cursor: not-allowed !important; opacity: 0.7; }
-        .btn-submit-active { background: var(--accent) !important; color: #ffffff !important; cursor: pointer !important; }
-        .auth-error-msg { color: var(--danger-bright); font-size: 0.78rem; font-weight: 700; margin-top: 6px; display: none; align-items: center; gap: 6px; }
-        .auth-legal-footer { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 36px; font-size: 0.78rem; }
-        .auth-legal-footer span { color: var(--text-secondary); cursor: pointer; }
-        .auth-legal-divider { color: var(--border); }
+        
+        /* --- التصميم الجديد لصفحات المصادقة --- */
+        .auth-container-new { width: 100%; max-width: 400px; margin: auto; display: flex; flex-direction: column; padding: 20px; text-align: right; background: var(--bg-main); min-height: 100vh; }
+        .auth-logo-new { text-align: center; margin-bottom: 20px; }
+        .auth-logo-new img { width: 80px; height: 80px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .auth-title-new { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 8px; text-align: center; }
+        .auth-subtitle-new { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 30px; text-align: center; }
+        .auth-input-group-new { margin-bottom: 16px; }
+        .auth-label-new { display: block; font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .auth-input-wrapper-new { position: relative; display: flex; align-items: center; background: #15151a; border: 1px solid #22222d; border-radius: 12px; padding: 0 14px; transition: border-color 0.2s; }
+        .auth-input-wrapper-new:focus-within { border-color: var(--accent); }
+        .auth-input-wrapper-new input { flex: 1; background: none; border: none; color: #fff; font-size: 0.9rem; padding: 14px 0; outline: none; text-align: right; }
+        .auth-input-wrapper-new .input-icon { color: var(--text-secondary); font-size: 1rem; margin-left: 10px; }
+        .auth-input-wrapper-new .eye-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 0; margin-right: 10px; }
+        .auth-row-new { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.8rem; }
+        .auth-row-new label { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); cursor: pointer; }
+        .auth-row-new input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px; }
+        .auth-row-new a { color: var(--accent); text-decoration: none; font-weight: 700; }
+        .auth-btn-primary-new { width: 100%; background: var(--accent); color: #fff; border: none; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; margin-bottom: 20px; transition: 0.2s; }
+        .auth-btn-primary-new:active { transform: scale(0.98); }
+        .auth-divider-new { display: flex; align-items: center; text-align: center; color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 20px; }
+        .auth-divider-new::before, .auth-divider-new::after { content: ''; flex: 1; border-bottom: 1px solid #22222d; }
+        .auth-divider-new::before { margin-left: 15px; }
+        .auth-divider-new::after { margin-right: 15px; }
+        .auth-btn-google-new { width: 100%; background: transparent; color: #fff; border: 1px solid #22222d; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 30px; transition: 0.2s; }
+        .auth-btn-google-new:hover { background: rgba(255,255,255,0.05); }
+        .auth-footer-new { text-align: center; font-size: 0.85rem; color: var(--text-secondary); margin-top: auto; padding-bottom: 20px; }
+        .auth-footer-new a { color: var(--accent); font-weight: 700; text-decoration: none; margin-right: 5px; }
+        .avatar-upload-new { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+        .avatar-circle-new { width: 80px; height: 80px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; border: 2px solid #22222d; margin-bottom: 10px; }
+        .avatar-text-new { font-size: 0.75rem; color: var(--text-secondary); }
+        .password-strength-new { display: flex; gap: 5px; margin-top: 8px; }
+        .strength-bar-new { flex: 1; height: 4px; background: #22222d; border-radius: 2px; }
+        .strength-bar-new.active { background: var(--accent); }
 
         .guest-gate-overlay, .notification-confirm-modal-overlay, .download-confirm-overlay,
         .title-modal-overlay, .rating-modal-overlay, .rules-modal-overlay, .options-modal-overlay, .report-modal-overlay, .download-progress-overlay, .request-modal-overlay {
@@ -723,7 +736,7 @@ body {
         </div>
     </div>
 
-    <div class="auth-overlay" id="authOverlay"><div class="auth-page-full" id="authBoxContainer"></div></div>
+    <div class="auth-overlay" id="authOverlay"><div class="auth-container-new" id="authBoxContainer"></div></div>
 
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="side-drawer" id="sideDrawer">
@@ -1504,48 +1517,136 @@ body {
             }
         }
 
-        function renderAuthModalState(state = 'main') {
+        function renderAuthModalState(state = 'login') {
             const overlay = document.getElementById('authOverlay');
             const box = document.getElementById('authBoxContainer');
             if (!overlay || !box) return;
             overlay.style.display = 'flex';
-            if (state === 'main') {
+            
+            const closeBtn = `<div style="width:100%; display:flex; justify-content:flex-end; margin-bottom:10px;"><button class="header-action-icon" onclick="document.getElementById('authOverlay').style.display='none'"><i class="fa-solid fa-xmark" style="font-size:1.4rem;"></i></button></div>`;
+            const logoHtml = `<div class="auth-logo-new"><img src="https://azerhamid59-lgtm.github.io/manhwa_gerx/icon.png" alt="Logo" onerror="this.src='https://via.placeholder.com/80/15151a/e50914?text=MG'"></div>`;
+            
+            if (state === 'login' || state === 'main') {
+                box.className = 'auth-container-new';
                 box.innerHTML = `
-                    <div style="width:100%; display:flex; justify-content:flex-end; margin-bottom:10px;"><button class="header-action-icon" onclick="document.getElementById('authOverlay').style.display='none'"><i class="fa-solid fa-xmark" style="font-size:1.4rem;"></i></button></div>
-                    <div class="auth-app-title"><span class="part-white">Manhwa</span><span class="part-pink">Gerx</span></div>
-                    <h2 class="auth-welcome-heading">مرحبا بك</h2>
-                    <p class="auth-subheading">منصتك الاحترافية لقراءة المانهوا والمانغا.</p>
-                    <div class="auth-action-box">
-                        <button class="auth-btn btn-google" id="btnGoogleAuth"><i class="fa-brands fa-google" style="color:#4285F4;"></i> متابعة باستخدام Google</button>
-                        <button class="auth-btn btn-email-trigger" onclick="renderAuthModalState('login')"><i class="fa-solid fa-envelope"></i> تسجيل الدخول بالبريد</button>
+                    ${closeBtn}
+                    ${logoHtml}
+                    <h2 class="auth-title-new">مرحباً بعودتك</h2>
+                    <p class="auth-subtitle-new">سجل الدخول لمتابعة قراءتك ومزامنة مفضلتك عبر أجهزتك</p>
+                    
+                    <div class="auth-input-group-new">
+                        <label class="auth-label-new">البريد الإلكتروني</label>
+                        <div class="auth-input-wrapper-new">
+                            <input type="email" id="loginEmailInput" placeholder="example@email.com" oninput="validateLoginFormInputs()">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                        </div>
                     </div>
-                    <div class="auth-legal-footer"><span onclick="document.getElementById('authOverlay').style.display='none'; navigateTo('privacy');">سياسة الخصوصية</span><span class="auth-legal-divider">•</span><span onclick="document.getElementById('authOverlay').style.display='none'; navigateTo('terms');">شروط الاستخدام</span></div>`;
-                document.getElementById('btnGoogleAuth').onclick = handleGoogleOAuth;
-            } else if (state === 'login') {
-                box.innerHTML = `
-                    <div style="width:100%; display:flex; justify-content:space-between; margin-bottom:20px;"><div class="logo-image-style"><span class="part-white">Manhwa</span><span class="part-pink">Gerx</span></div><button class="header-action-icon" onclick="renderAuthModalState('main')"><i class="fa-solid fa-arrow-right"></i></button></div>
-                    <h2 class="auth-welcome-heading" style="margin-bottom:18px;">تسجيل الدخول</h2>
-                    <div class="auth-action-box">
-                        <div class="auth-input-group"><label>البريد الإلكتروني</label><div class="auth-input-field-wrapper"><input type="email" id="loginEmailInput" placeholder="أدخل البريد" oninput="validateLoginFormInputs()"></div><div class="auth-error-msg" id="emailErrorMsg">صيغة غير صحيحة</div></div>
-                        <div class="auth-input-group"><label>كلمة المرور</label><div class="auth-input-field-wrapper"><input type="password" id="loginPassInput" placeholder="••••••••" oninput="validateLoginFormInputs()"><button class="auth-password-toggle" onclick="togglePasswordVisibility('loginPassInput', this)"><i class="fa-solid fa-eye"></i></button></div></div>
-                        <button class="auth-btn btn-submit-disabled" id="submitLoginBtn" disabled>تسجيل الدخول</button>
-                        <span style="text-align:center; font-size:0.8rem; color:var(--text-secondary); margin-top:14px; cursor:pointer;" onclick="renderAuthModalState('register')">ليس لديك حساب؟ <strong style="color:var(--accent);">أنشئ حساباً</strong></span>
-                    </div>`;
-                document.getElementById('submitLoginBtn').onclick = handleEmailLogin;
+                    
+                    <div class="auth-input-group-new">
+                        <label class="auth-label-new">كلمة المرور</label>
+                        <div class="auth-input-wrapper-new">
+                            <input type="password" id="loginPassInput" placeholder="••••••••" oninput="validateLoginFormInputs()">
+                            <button class="eye-btn" onclick="togglePasswordVisibility('loginPassInput', this)"><i class="fa-solid fa-eye"></i></button>
+                            <i class="fa-solid fa-lock input-icon" style="margin-left:0; margin-right:10px;"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-row-new">
+                        <label><input type="checkbox" id="rememberMeCheckbox"> تذكرني</label>
+                        <a href="#" onclick="alert('سيتم إرسال رابط الاستعادة لبريدك قريباً.')">نسيت كلمة المرور؟</a>
+                    </div>
+                    
+                    <button class="auth-btn-primary-new" id="submitLoginBtn" onclick="handleEmailLogin()">تسجيل الدخول</button>
+                    
+                    <div class="auth-divider-new">أو تابع باستخدام</div>
+                    
+                    <button class="auth-btn-google-new" id="btnGoogleAuth" onclick="handleGoogleOAuth()">
+                        <i class="fa-brands fa-google" style="color:#EA4335;"></i> الدخول عبر حساب Google
+                    </button>
+                    
+                    <div class="auth-footer-new">
+                        ليس لديك حساب؟ <a href="#" onclick="renderAuthModalState('register')">إنشاء حساب جديد</a>
+                    </div>
+                `;
             } else if (state === 'register') {
+                box.className = 'auth-container-new';
                 box.innerHTML = `
-                    <div style="width:100%; display:flex; justify-content:space-between; margin-bottom:20px;"><div class="logo-image-style"><span class="part-white">Manhwa</span><span class="part-pink">Gerx</span></div><button class="header-action-icon" onclick="renderAuthModalState('login')"><i class="fa-solid fa-arrow-right"></i></button></div>
-                    <h2 class="auth-welcome-heading" style="margin-bottom:18px;">إنشاء حساب</h2>
-                    <div class="auth-action-box">
-                        <div class="auth-input-group"><label>اسم المستخدم</label><div class="auth-input-field-wrapper"><input type="text" id="regUsernameInput" placeholder="اسم المستخدم"></div></div>
-                        <div class="auth-input-group"><label>البريد</label><div class="auth-input-field-wrapper"><input type="email" id="regEmailInput" placeholder="name@example.com"></div></div>
-                        <div class="auth-input-group"><label>كلمة المرور</label><div class="auth-input-field-wrapper"><input type="password" id="regPassInput"><button class="auth-password-toggle" onclick="togglePasswordVisibility('regPassInput', this)"><i class="fa-solid fa-eye"></i></button></div></div>
-                        <div class="auth-input-group"><label>تأكيد كلمة المرور</label><div class="auth-input-field-wrapper"><input type="password" id="regConfirmPassInput"><button class="auth-password-toggle" onclick="togglePasswordVisibility('regConfirmPassInput', this)"><i class="fa-solid fa-eye"></i></button></div></div>
-                        <div style="display:flex; gap:8px; margin: 14px 0; font-size:0.75rem;"><input type="checkbox" id="termsCheckbox" style="accent-color:var(--accent);"><label for="termsCheckbox" style="cursor:pointer;">أوافق على الشروط وقواعد المجتمع.</label></div>
-                        <button class="auth-btn btn-email-trigger" id="submitRegisterBtn">إنشاء الحساب</button>
-                    </div>`;
-                document.getElementById('submitRegisterBtn').onclick = handleEmailRegister;
+                    ${closeBtn}
+                    ${logoHtml}
+                    <h2 class="auth-title-new">إنشاء حساب جديد</h2>
+                    <p class="auth-subtitle-new">انضم لمجتمع Manhwa Gerx واحتفظ بمفضلاتك</p>
+                    
+                    <div class="avatar-upload-new">
+                        <div class="avatar-circle-new"><i class="fa-solid fa-user"></i></div>
+                        <span class="avatar-text-new">أضف صورة مخصصة (اختياري)</span>
+                    </div>
+
+                    <div class="auth-input-group-new">
+                        <label class="auth-label-new">الاسم الكامل</label>
+                        <div class="auth-input-wrapper-new">
+                            <input type="text" id="regUsernameInput" placeholder="اسمك الكامل">
+                            <i class="fa-solid fa-user input-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-input-group-new">
+                        <label class="auth-label-new">البريد الإلكتروني</label>
+                        <div class="auth-input-wrapper-new">
+                            <input type="email" id="regEmailInput" placeholder="example@email.com">
+                            <i class="fa-solid fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-input-group-new">
+                        <label class="auth-label-new">كلمة المرور</label>
+                        <div class="auth-input-wrapper-new">
+                            <input type="password" id="regPassInput" placeholder="8 أحرف على الأقل" oninput="updatePasswordStrength(this.value)">
+                            <button class="eye-btn" onclick="togglePasswordVisibility('regPassInput', this)"><i class="fa-solid fa-eye"></i></button>
+                            <i class="fa-solid fa-lock input-icon" style="margin-left:0; margin-right:10px;"></i>
+                        </div>
+                        <div class="password-strength-new">
+                            <div class="strength-bar-new" id="strengthBar1"></div>
+                            <div class="strength-bar-new" id="strengthBar2"></div>
+                            <div class="strength-bar-new" id="strengthBar3"></div>
+                        </div>
+                        <span style="font-size:0.65rem; color:var(--text-secondary); margin-top:4px; display:block;">استخدم مزيجاً من الأحرف والأرقام لقوة أكبر</span>
+                    </div>
+                    
+                    <div class="auth-input-group-new">
+                        <label class="auth-label-new">تأكيد كلمة المرور</label>
+                        <div class="auth-input-wrapper-new">
+                            <input type="password" id="regConfirmPassInput" placeholder="أعد كتابة كلمة المرور">
+                            <button class="eye-btn" onclick="togglePasswordVisibility('regConfirmPassInput', this)"><i class="fa-solid fa-eye"></i></button>
+                            <i class="fa-solid fa-lock input-icon" style="margin-left:0; margin-right:10px;"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-row-new" style="justify-content: flex-start; margin-top: 10px;">
+                        <label><input type="checkbox" id="termsCheckbox" style="width:16px; height:16px;"> أوافق على <a href="#" onclick="navigateTo('terms')" style="margin:0;">شروط الاستخدام</a> و <a href="#" onclick="navigateTo('privacy')" style="margin:0;">سياسة الخصوصية</a> الخاصة بـ Manhwa Gerx</label>
+                    </div>
+                    
+                    <button class="auth-btn-primary-new" id="submitRegisterBtn" onclick="handleEmailRegister()">إنشاء الحساب</button>
+                    
+                    <div class="auth-divider-new">أو تابع باستخدام</div>
+                    
+                    <button class="auth-btn-google-new" id="btnGoogleAuth" onclick="handleGoogleOAuth()">
+                        <i class="fa-brands fa-google" style="color:#EA4335;"></i> الدخول عبر حساب Google
+                    </button>
+                    
+                    <div class="auth-footer-new">
+                        لديك حساب بالفعل؟ <a href="#" onclick="renderAuthModalState('login')">تسجيل الدخول</a>
+                    </div>
+                `;
             }
+        }
+
+        // دالة مساعدة لتحديث قوة كلمة المرور
+        function updatePasswordStrength(val) {
+            const bars = [document.getElementById('strengthBar1'), document.getElementById('strengthBar2'), document.getElementById('strengthBar3')];
+            bars.forEach(b => { if(b) b.classList.remove('active'); });
+            if (val.length > 0 && bars[0]) bars[0].classList.add('active');
+            if (val.length >= 6 && bars[1]) bars[1].classList.add('active');
+            if (val.length >= 8 && /[A-Z]/.test(val) && /[0-9]/.test(val) && bars[2]) bars[2].classList.add('active');
         }
 
         function validateLoginFormInputs() {
