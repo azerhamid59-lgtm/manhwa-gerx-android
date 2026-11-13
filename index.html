@@ -1717,9 +1717,6 @@ body {
                 // استدعاء دالة تسجيل الدخول من المكتبة الجديدة
                 const res = await window.Capacitor.Plugins.SocialLogin.login({
                     provider: 'google',
-                    options: {
-                        scopes: ['email', 'profile']
-                    }
                 });
 
                 // استخراج الـ ID Token من النتيجة
