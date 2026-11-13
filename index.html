@@ -1704,17 +1704,32 @@ body {
             finally { btn.innerHTML = `إنشاء الحساب`; btn.disabled = false; }
         }
 
+        // --- التعديلات الخاصة بمكتبة @capgo/capacitor-social-login ---
         async function handleGoogleOAuth() {
             if (!db) return;
             try {
-                if (!window.Capacitor || !window.Capacitor.Plugins.GoogleAuth) {
+                // التحقق من توفر الإضافة في بيئة Capacitor
+                if (!window.Capacitor || !window.Capacitor.Plugins.SocialLogin) {
                     showToast("تسجيل الدخول بجوجل غير مدعوم في المتصفح.", "error");
                     return;
                 }
 
-                const googleUser = await window.Capacitor.Plugins.GoogleAuth.signIn();
-                const idToken = googleUser.authentication.idToken;
+                // استدعاء دالة تسجيل الدخول من المكتبة الجديدة
+                const res = await window.Capacitor.Plugins.SocialLogin.login({
+                    provider: 'google',
+                    options: {
+                        scopes: ['email', 'profile']
+                    }
+                });
 
+                // استخراج الـ ID Token من النتيجة
+                const idToken = res.result.idToken;
+
+                if (!idToken) {
+                    throw new Error("لم يتم استلام ID Token من جوجل.");
+                }
+
+                // إرسال الـ Token إلى Supabase
                 const { data, error } = await db.auth.signInWithIdToken({
                     provider: 'google',
                     token: idToken,
@@ -4155,14 +4170,22 @@ body {
                 initPullToRefresh();
                 navigateTo('home');
 
-                // تهيئة إضافة جوجل
-                if (window.Capacitor && window.Capacitor.Plugins.GoogleAuth) {
-                    window.Capacitor.Plugins.GoogleAuth.initialize({
-                        clientId: '901201695721-4kokplipcf00epts55u37vjskumr5fv.apps.googleusercontent.com',
-                        scopes: ['profile', 'email'],
-                        grantOfflineAccess: true,
-                    });
+                // --- تهيئة إضافة SocialLogin ---
+                if (window.Capacitor && window.Capacitor.Plugins.SocialLogin) {
+                    try {
+                        await window.Capacitor.Plugins.SocialLogin.initialize({
+                            google: {
+                                // تأكد من وضع Web Client ID الخاص بك هنا
+                                webClientId: '901201695721-4kokplipcf00epts55u37vjskumr5fv.apps.googleusercontent.com',
+                                mode: 'offline' // أو 'online'
+                            }
+                        });
+                        console.log("SocialLogin initialized successfully");
+                    } catch (initErr) {
+                        console.error("SocialLogin initialization error:", initErr);
+                    }
                 }
+                // -------------------------------------
 
                 try { await initAuthSystem(); } catch(e) { console.error("Auth init failed", e); }
                 
