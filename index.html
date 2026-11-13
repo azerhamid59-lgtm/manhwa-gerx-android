@@ -1742,9 +1742,10 @@ body {
                 showToast("تم تسجيل الدخول بنجاح!", "success");
 
             } catch (err) {
-                console.error("Google Auth Error:", err);
-                showToast("تعذر تسجيل الدخول بـ Google.", "error");
-            }
+    console.error("Google Auth Error:", err);
+    // هذا السطر الجديد سيطبع الخطأ الحقيقي باللون الأحمر
+    showToast("الخطأ: " + (err.message || JSON.stringify(err)), "error", 10000); 
+} 
         }
 
         async function handleLogout() {
