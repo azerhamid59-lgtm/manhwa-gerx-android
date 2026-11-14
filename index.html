@@ -1716,8 +1716,11 @@ body {
 
                 // استدعاء دالة تسجيل الدخول من المكتبة الجديدة
                 const res = await window.Capacitor.Plugins.SocialLogin.login({
-                    provider: 'google',
-                });
+    provider: 'google',
+    options: {
+        filterByAuthorizedAccounts: false
+    }
+});
 
                 // استخراج الـ ID Token من النتيجة
                 const idToken = res.result.idToken;
